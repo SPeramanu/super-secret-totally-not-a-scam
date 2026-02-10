@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Important Question</title>
+  <title>Top Secret Important Question!</title>
   <style>
     body {
       margin: 0;
@@ -70,16 +70,16 @@
 </head>
 <body>
   <div class="card" id="askPage">
-    <h1>Will you be my Valentine? 💌</h1>
+    <h1>Hey C8win, will you be my Valentine? 💌</h1>
     <div class="buttons">
       <button id="yesBtn">Yes 😳</button>
-      <button id="noBtn">No 🙄</button>
+      <button id="noBtn">No 🙄. Terrible choice btw.</button>
     </div>
   </div>
 
   <div class="card yay hidden" id="yayPage">
     <h1>YIPEEEE 🎉😼</h1>
-    <p>Best decision ever.</p>
+    <p>Good choice soldier. You'll be receiving instructions soon. Remember this is strictly confidential (that's why it's super secret)</p>
     <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Happy cat" />
   </div>
 
@@ -89,6 +89,16 @@
     const askPage = document.getElementById("askPage");
     const yayPage = document.getElementById("yayPage");
 
+    const noTexts = [
+      "u sure ab that? 😐",
+      "be so fr rn 😭",
+      "makin' me cry out here frfr 💔",
+      "ill give u anotha' chance 😤",
+      "No 🙄"
+    ];
+
+    let noClickCount = 0;
+
     function moveButton() {
       const x = Math.random() * 200 - 100;
       const y = Math.random() * 80 - 40;
@@ -97,6 +107,15 @@
 
     noBtn.addEventListener("mouseenter", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
+
+    noBtn.addEventListener("click", () => {
+      noClickCount++;
+      
+      const textIndex = noClickCount % noTexts.length;
+      noBtn.textContent = noTexts[textIndex];
+
+      moveButton();
+    });
 
     yesBtn.addEventListener("click", () => {
       askPage.classList.add("hidden");
